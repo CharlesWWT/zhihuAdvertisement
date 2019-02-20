@@ -74,24 +74,32 @@ public class AdImageViewVersion2 extends AppCompatImageView {
     private int offSet = 0;
 
     public void setDy(int dy) {
-//        Log.e("setDy回调","*****");
-//        Log.e("mBitmapRectF.height()",mBitmapRectF.height()+"");
+        //图片顶部到屏幕底部的距离
+        if(dy<=mMinDy) {
+            offSet= (int) (mBitmapRectF.height()-mMinDy);
+        }else {
+            offSet= (int) (mBitmapRectF.height()-mMinDy-(dy-mMinDy));
+        }
+        if(dy>=mBitmapRectF.height()) {
+            offSet=0;
+        }
 //         mMinDy 为控件高度 dy为图片顶部到屏幕底部的距离 mBitmapRectF.height() - mMinDy 为未显示距离 mdy为图片底部到屏幕底部的距离
-        mDy = dy - mMinDy; //mDy:图片底部到屏幕底部的距离
-        if (mDy <= 0) {
-            offSet = (int) mBitmapRectF.height();
-        }
-        offSet = (int) (mBitmapRectF.height() - mMinDy - mDy);
-        if (mDy > mBitmapRectF.height() - mMinDy) {
-            offSet = 0;
-        }
+//        mDy = dy - mMinDy; //mDy:图片顶部到屏幕底部的距离
+//        Log.e("mDy",mDy+"");
+//        if (mDy <= 0) {
+//            offSet = (int) mBitmapRectF.height();
+//        }
+//        offSet = (int) (mBitmapRectF.height() - mMinDy-dy);
+//        if (mDy > mBitmapRectF.height() - mMinDy) {
+//            offSet = 0;
+//        }
         invalidate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.save();
-//        Log.e("offset", -offSet + "");
+//        Log.e("offset", offSet + "");
         canvas.translate(0, -offSet);
 //        Log.e("-mDy",-mDy+"");
         canvas.drawBitmap(mBitmap, null, mBitmapRectF, null);

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             mockDatas.add(i + "");
         }
 
+
         mRecyclerView.setLayoutManager(mLinearLayoutManager = new LinearLayoutManager(this));
 
         mRecyclerView.setAdapter(new CommonAdapter<String>(MainActivity.this,
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 int lPos = mLinearLayoutManager.findLastVisibleItemPosition();
                 for (int i = fPos; i <= lPos; i++) {
                     View view = mLinearLayoutManager.findViewByPosition(i);
-                    AdImageViewVersion1 adImageView = view.findViewById(R.id.id_iv_ad);
+                    AdImageViewVersion2 adImageView = view.findViewById(R.id.id_iv_ad);
 //                    Log.e("visible",adImageView.getVisibility()+"");
                     if (adImageView.getVisibility() == View.VISIBLE) {
 //                        Log.e("getHeight", mLinearLayoutManager.getHeight() + "");
