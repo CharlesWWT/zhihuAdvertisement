@@ -8,7 +8,8 @@
 * 当imageview没有完全显示时，偏移量固定,偏移量为drawable的高度减去imageview控件的高度，此时不进行canvas偏移，视觉效果就是图片跟随手指一起滑动
 * 当imageview完全显示时，进行偏移量计算，drawable高度减去imageview高度再减去imageview到屏幕底部的距离，视觉效果为手指滑动，图片不动
 * 当drawable图片顶部完全显示时，偏移量为0，偏移活动完成，视觉效果为图片和手指一起滑动
-```         if(dy<=mMinDy) {
+```         
+if(dy<=mMinDy) {
             offSet= (int) (mBitmapRectF.height()-mMinDy);
         }else {
             offSet= (int) (mBitmapRectF.height()-mMinDy-(dy-mMinDy));
